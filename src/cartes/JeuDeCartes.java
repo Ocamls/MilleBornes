@@ -10,7 +10,7 @@ public class JeuDeCartes {
 			new Configuration(3, new Attaque(Type.ESSENCE)), new Configuration(1, new Botte(Type.FEU)),
 			new Configuration(1, new Botte(Type.ACCIDENT)), new Configuration(1, new Botte(Type.CREVAISON)),
 			new Configuration(1, new Botte(Type.ESSENCE)), new Configuration(6, new FinLimite()),
-			new Configuration(6, new DebutLimite()) };
+			new Configuration(4, new DebutLimite()) };
 
 	public String affichageJeuDeCartes() {
 		StringBuilder builder = new StringBuilder();
@@ -20,6 +20,34 @@ public class JeuDeCartes {
 
 		}
 		return builder.toString();
+	}
+
+	public Carte[] donnerCartes() {
+		Carte[] cartes = new Carte[106];
+		int nbCartes = 0;
+		for (Configuration config : typeDeCartes) {
+			int n = config.getNbExemplaires();
+			for (int i = 0; i < n; i++) {
+				cartes[nbCartes] = config.getCarte();
+				nbCartes++;
+			}
+		}
+		return cartes;	
+	}
+	
+//	public boolean checkCount() {
+//		
+//	}
+	
+	
+
+	
+	public void afficherCartes(Carte[] cartes) { // Cette fonction n'était pas demandé mais utile
+		for (Carte carte : cartes) {
+			if (carte != null) {
+				System.out.println(carte);
+			}
+		}
 	}
 
 	private static class Configuration extends Carte {
@@ -40,6 +68,12 @@ public class JeuDeCartes {
 			return nbExemplaires;
 		}
 
+	}
+
+	public static void main(String[] args) {
+		JeuDeCartes jdc = new JeuDeCartes();
+		Carte[] cartes = jdc.donnerCartes();
+		jdc.afficherCartes(cartes);
 	}
 
 }
