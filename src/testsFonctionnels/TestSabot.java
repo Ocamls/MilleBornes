@@ -1,8 +1,8 @@
 package testsFonctionnels;
 
-import java.util.Iterator;
-
-import cartes.Botte;
+//import java.util.Iterator;
+//
+//import cartes.Botte;
 import cartes.Carte;
 import cartes.Parade;
 import cartes.Type;
@@ -22,7 +22,8 @@ public class TestSabot {
 		sabot.ajouterCarte(c2);
 		sabot.ajouterCarte(c3);
 		sabot.ajouterCarte(c4);
-		Carte As = new Botte(Type.ACCIDENT); 
+		//SCarte As = new Botte(Type.ACCIDENT); 
+		
 		/*Ici, il y a 4 cartes dans le sabot*/
 		
 				// PIOCHE //

@@ -5,8 +5,6 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import cartes.Carte;
-import cartes.Parade;
-import cartes.Type;
 
 public class Sabot implements Iterable<Carte> {
 	private Carte[] cartes;
@@ -53,10 +51,13 @@ public class Sabot implements Iterable<Carte> {
 
 	public Carte piocher() {
 		Iterator<Carte> iter = iterator();
-		Carte cartePioche = iter.next();
-		iter.remove();
-		nombreOperations++;
-		return cartePioche;
+		if(iter.hasNext()) {
+			Carte cartePioche = iter.next();
+			iter.remove();
+			nombreOperations++;
+			return cartePioche;
+		}
+		return null;
 	}
 
 	public Iterator<Carte> iterator() {

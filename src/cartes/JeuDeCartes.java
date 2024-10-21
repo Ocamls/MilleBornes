@@ -32,16 +32,31 @@ public class JeuDeCartes {
 				nbCartes++;
 			}
 		}
-		return cartes;	
+		return cartes;
 	}
-	
-//	public boolean checkCount() {
-//		
-//	}
-	
-	
 
-	
+	private int count(Carte carteACompter, Carte[] cartes) {
+		int count = 0;
+		for (Carte carte : cartes) {
+			if (carte.equals(carteACompter)) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	public boolean checkCount() {
+		Carte[] cartes = donnerCartes();
+		for (Configuration configuration : typeDeCartes) {
+			System.out.println(configuration.getCarte() + " " + count(configuration.getCarte(), cartes));
+			if (!(count(configuration.getCarte(), cartes) == (configuration.getNbExemplaires()))) {
+				System.out.println("false " + configuration.carte);
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public void afficherCartes(Carte[] cartes) { // Cette fonction n'était pas demandé mais utile
 		for (Carte carte : cartes) {
 			if (carte != null) {
@@ -70,10 +85,12 @@ public class JeuDeCartes {
 
 	}
 
-	public static void main(String[] args) {
-		JeuDeCartes jdc = new JeuDeCartes();
-		Carte[] cartes = jdc.donnerCartes();
-		jdc.afficherCartes(cartes);
-	}
+//	public static void main(String[] args) {
+//		JeuDeCartes jdc = new JeuDeCartes();
+//		Carte[] cartes = jdc.donnerCartes();
+//		jdc.afficherCartes(cartes);
+//
+//		System.out.println(jdc.checkCount());
+//	}
 
 }

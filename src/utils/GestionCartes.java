@@ -1,22 +1,20 @@
-
 package utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
 import java.util.Set;
 
 public class GestionCartes {
+	private static Random random = new Random();
 
 	public static <Carte> Carte extraire(List<Carte> liste) {
 		if (liste.isEmpty()) {
 			throw new IllegalArgumentException("La liste ne doit pas être vide");
 		}
-		Random random = new Random();
 		int index = random.nextInt(liste.size());
 		return liste.remove(index);
 	}
@@ -25,7 +23,7 @@ public class GestionCartes {
 		if (liste.isEmpty()) {
 			throw new IllegalArgumentException("La liste ne doit pas être vide");
 		}
-		Random random = new Random();
+		
 		int index = random.nextInt(liste.size());
 		ListIterator<Carte> it = liste.listIterator();
 		Carte element = null;
@@ -39,7 +37,7 @@ public class GestionCartes {
 	public static <Carte> List<Carte> melanger(List<Carte> liste) {
 		List<Carte> listeMelangee = new ArrayList<>();
 		while (!liste.isEmpty()) {
-			listeMelangee.add(extraire(liste)); // Extraire tous les éléments un par un
+			listeMelangee.add(extraire(liste));
 		}
 		return listeMelangee;
 	}
@@ -77,7 +75,7 @@ public class GestionCartes {
 
 	public static <Carte> boolean verifierRassemblement(List<Carte> liste) {
 		if (liste.isEmpty()) {
-			return true; // Si la liste est vide, elle est considérée comme bien "rassemblée"
+			return true;
 		}
 		ListIterator<Carte> it1 = liste.listIterator();
 		Carte elementCourant = it1.next();
@@ -88,10 +86,10 @@ public class GestionCartes {
 				ListIterator<Carte> it2 = liste.listIterator(it1.nextIndex());
 				while (it2.hasNext()) {
 					if (it2.next().equals(elementCourant)) {
-						return false; 
+						return false;
 					}
 				}
-				elementCourant = elementSuivant; 
+				elementCourant = elementSuivant;
 			}
 		}
 		return true;

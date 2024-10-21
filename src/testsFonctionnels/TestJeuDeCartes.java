@@ -8,5 +8,7 @@ public class TestJeuDeCartes {
 		JeuDeCartes jdc = new JeuDeCartes(); 
 		
 		System.out.println(jdc.affichageJeuDeCartes());
+		
+//		System.out.println(jdc.checkCount());
 	}
 }
